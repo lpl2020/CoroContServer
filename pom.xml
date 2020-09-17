@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ProDevTeam</groupId>
+  <artifactId>CoroContServer</artifactId>
+  <packaging>jar</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId><!-- 依赖管理 -->
+	<version>2.0.0.RELEASE</version><!-- 可选其他版本，现在已有2.0.0.RELEASE -->
+	<relativePath></relativePath>
+  </parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	
+  <name>bigDataServer Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+	  <dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-thymeleaf</artifactId>
+	  </dependency>
+  	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+<!-- 	添加Web特性 -->
+<!-- 	<dependency> -->
+<!--          <groupId>org.springframework.boot</groupId> -->
+<!--          <artifactId>spring-boot-starter-freemarker</artifactId> -->
+<!--      </dependency> -->
+     <dependency>
+   		<groupId>org.mybatis.spring.boot</groupId>
+	   <artifactId>mybatis-spring-boot-starter</artifactId>
+	   <version>2.0.0</version>
+	</dependency>
+<!-- 	thymeleaf试图解析器 -->
+<!-- 	<dependency> -->
+<!-- 		<groupId>org.springframework.boot</groupId> -->
+<!-- 		<artifactId>spring-boot-starter-thymeleaf</artifactId> -->
+<!-- 	</dependency> -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+	</dependency>
+		
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- log日志相关配置 -->
+    <dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+		<artifactId>tomcat-embed-logging-juli</artifactId>
+		<version>8.0.23</version>
+	</dependency>
+	<!-- mysql数据库相关包 -->
+	<dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <scope>provided</scope>
+    </dependency> 
+    <!-- Json相关包 -->
+     <dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>fastjson</artifactId>
+	    <version>1.2.47</version>
+	 </dependency>
+	 <!-- oracle数据库相关包 -->
+	 <dependency>
+		<groupId>com.oracle</groupId>
+		<artifactId>ojdbc6</artifactId>
+		<version>11.2.0.3</version>
+	</dependency>
+	<!-- 非严格html解析 -->
+<!-- 	<dependency> -->
+<!-- 			<groupId>net.sourceforge.nekohtml</groupId> -->
+<!-- 			<artifactId>nekohtml</artifactId> -->
+<!-- 	</dependency> -->
+	<!-- 添加自动编译 -->
+	<dependency>
+	   <groupId>org.springframework.boot</groupId>
+	   <artifactId>spring-boot-devtools</artifactId>
+   		<scope>runtime</scope>
+ 	</dependency>
+ 	
+    <!--  	http请求包 -->
+ 	<dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+     <dependency>
+       <groupId>org.apache.httpcomponents</groupId>
+       <artifactId>httpclient</artifactId>
+       <version>4.5.6</version>
+     </dependency>
+  </dependencies>
+
+  	<build>
+		<finalName>CoroContServer</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin </artifactId><!-- 运行main方法所必须 -->
+			</plugin>
+		</plugins>
+		
+		<resources>
+          <!-- 依赖外部jar包  打成jar时引入 -->
+	          <resource>
+	            <directory>src/main/java</directory>
+	            <includes>
+	                <include>**/*.*</include>
+	            </includes>
+	        </resource>
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <includes>
+	                <include>**/*.*</include>
+	            </includes>
+	        </resource>
+
+            <resource>
+                 <directory>lib</directory>
+                 <targetPath>BOOT-INF/lib/</targetPath>
+                <includes>
+                     <include>**/*.jar</include>
+                 </includes>
+             </resource>
+         </resources>
+	</build>
+</project>
